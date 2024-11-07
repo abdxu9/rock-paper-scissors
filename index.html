@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            // They are three possible choice "1: rock", "2: paper" or "3: scissor"
+            computerChoice = Math.floor(Math.random() * 3) + 1;
+            return computerChoice;
+        }
+
+        // getUserChoise
+        function getUserChoice(){
+            userChoice = parseInt(prompt("They are three possible choice \"1: rock\", \"2: paper\" or \"3: scissor"))
+            if(userChoice >= 1 && userChoice <=3){
+                return userChoice;
+            }
+            else{
+                console.log("Inval input. The value need to be 1, 2 or 3.")
+                return null;
+            }
+        }
+
+        // compareChoise
+        function compareChoice(computerChoice, userChoice){
+            // They are three possible choice "1: rock", "2: paper" or "3: scissor"
+
+            if (computerChoice == userChoice){
+                return "Draw";
+            }
+            
+            else if( (computerChoice == 1 && userChoice == 3) || (computerChoice == 2 && userChoice == 1) || (computerChoice == 3 && userChoice == 2)){
+                return "Computer wins";
+            }
+
+            else{
+                return "User wins";
+            }
+
+        }
+
+        function printChoice(choice){
+            switch(choice) {
+                case 1: return "Rock";
+                case 2: return "Paper";
+                case 3: return "Scissors";
+                default: return "Error";
+            }
+        }
+
+
+        // mainFunction
+        // We get the computer answer
+        computerChoice = getComputerChoice();
+
+        userChoice = getUserChoice();
+
+        if(userChoice != null){
+            console.log("Computer play " + printChoice(computerChoice));
+            console.log("User play " + printChoice(userChoice));
+            console.log(compareChoice(computerChoice, userChoice));
+        }
+        // We get the user answer
+        // We compare both answer to see who win
+    </script>
+</body>
+</html>
