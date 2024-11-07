@@ -9,13 +9,12 @@
     <script>
         function getComputerChoice(){
             // They are three possible choice "1: rock", "2: paper" or "3: scissor"
-            computerChoice = Math.floor(Math.random() * 3) + 1;
-            return computerChoice;
+            return computerChoice = Math.floor(Math.random() * 3) + 1;
         }
 
         // getUserChoise
         function getUserChoice(){
-            userChoice = parseInt(prompt("They are three possible choice \"1: rock\", \"2: paper\" or \"3: scissor"))
+            const userChoice = parseInt(prompt("They are three possible choice \"1: rock\", \"2: paper\" or \"3: scissor"))
             if(userChoice >= 1 && userChoice <=3){
                 return userChoice;
             }
@@ -55,17 +54,53 @@
 
         // mainFunction
         // We get the computer answer
-        computerChoice = getComputerChoice();
+        function playRound(computerChoice, userChoice){
 
-        userChoice = getUserChoice();
-
-        if(userChoice != null){
-            console.log("Computer play " + printChoice(computerChoice));
-            console.log("User play " + printChoice(userChoice));
-            console.log(compareChoice(computerChoice, userChoice));
+            if(userChoice != null){
+                console.log("Computer play " + printChoice(computerChoice));
+                console.log("User play " + printChoice(userChoice));
+                console.log(compareChoice(computerChoice, userChoice));
+                return compareChoice(computerChoice, userChoice);
+            }
+            return "Invalid round";
         }
-        // We get the user answer
-        // We compare both answer to see who win
+
+        //---------------------------------------------------------------------------------------------------//
+        
+
+        function playGame(){
+            let computerScore = 0;
+            let userScore = 0;
+            for(let i = 0 ; i< 5; i++){
+                const computerChoice = getComputerChoice();
+                const userChoice = getUserChoice();
+                const round = playRound(computerChoice, userChoice);
+                if(round == "Computer wins"){
+                    computerScore++;
+                    console.log("Computer score: " + computerScore)
+                }
+                else if(round == "User wins"){
+                    userScore++;
+                    console.log("User score: " + userScore)
+                }
+            }
+
+            // Final result
+            console.log("Final Scores:");
+            console.log("Computer: " + computerScore);
+            console.log("User: " + userScore);
+            
+            if (computerScore > userScore) {
+                console.log("Computer wins the game!");
+            } else if (userScore > computerScore) {
+                console.log("User wins the game!");
+            } else {
+                console.log("The game is a draw!");
+            }
+        }
+
+        playGame();
+    
     </script>
 </body>
 </html>
