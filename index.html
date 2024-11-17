@@ -3,104 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <script>
-        function getComputerChoice(){
-            // They are three possible choice "1: rock", "2: paper" or "3: scissor"
-            return computerChoice = Math.floor(Math.random() * 3) + 1;
-        }
-
-        // getUserChoise
-        function getUserChoice(){
-            const userChoice = parseInt(prompt("They are three possible choice \"1: rock\", \"2: paper\" or \"3: scissor"))
-            if(userChoice >= 1 && userChoice <=3){
-                return userChoice;
-            }
-            else{
-                console.log("Inval input. The value need to be 1, 2 or 3.")
-                return null;
-            }
-        }
-
-        // compareChoise
-        function compareChoice(computerChoice, userChoice){
-            // They are three possible choice "1: rock", "2: paper" or "3: scissor"
-
-            if (computerChoice == userChoice){
-                return "Draw";
-            }
-            
-            else if( (computerChoice == 1 && userChoice == 3) || (computerChoice == 2 && userChoice == 1) || (computerChoice == 3 && userChoice == 2)){
-                return "Computer wins";
-            }
-
-            else{
-                return "User wins";
-            }
-
-        }
-
-        function printChoice(choice){
-            switch(choice) {
-                case 1: return "Rock";
-                case 2: return "Paper";
-                case 3: return "Scissors";
-                default: return "Error";
-            }
-        }
-
-
-        // mainFunction
-        // We get the computer answer
-        function playRound(computerChoice, userChoice){
-
-            if(userChoice != null){
-                console.log("Computer play " + printChoice(computerChoice));
-                console.log("User play " + printChoice(userChoice));
-                console.log(compareChoice(computerChoice, userChoice));
-                return compareChoice(computerChoice, userChoice);
-            }
-            return "Invalid round";
-        }
-
-        //---------------------------------------------------------------------------------------------------//
-        
-
-        function playGame(){
-            let computerScore = 0;
-            let userScore = 0;
-            for(let i = 0 ; i< 5; i++){
-                const computerChoice = getComputerChoice();
-                const userChoice = getUserChoice();
-                const round = playRound(computerChoice, userChoice);
-                if(round == "Computer wins"){
-                    computerScore++;
-                    console.log("Computer score: " + computerScore)
-                }
-                else if(round == "User wins"){
-                    userScore++;
-                    console.log("User score: " + userScore)
-                }
-            }
-
-            // Final result
-            console.log("Final Scores:");
-            console.log("Computer: " + computerScore);
-            console.log("User: " + userScore);
-            
-            if (computerScore > userScore) {
-                console.log("Computer wins the game!");
-            } else if (userScore > computerScore) {
-                console.log("User wins the game!");
-            } else {
-                console.log("The game is a draw!");
-            }
-        }
-
-        playGame();
-    
-    </script>
+        <div id="selection-buttons">
+            <button id="rock">rock</button>
+            <button id="paper">paper</button>
+            <button id="scissors">scissors</button>
+        </div>
+        <div id="score">
+            player : 0 and computer : 0
+        </div>
 </body>
 </html>
