@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll("button");
-const score =document.querySelector("#score")
+const score = document.querySelector("#score")
+const history = document.querySelector("#game-history")
 
 /*------------ definition of functions for the game ------------*/
 
@@ -8,6 +9,14 @@ function getComputerChoice(){
     return computerChoice = Math.floor(Math.random() * 3) + 1;
 }
 
+function printChoice(choice){
+    switch(choice) {
+        case 1: return "rock";
+        case 2: return "paper";
+        case 3: return "scissors";
+        default: return "Error";
+    }
+}
 
 function getUserChoice(userChoice){
     if(userChoice == "rock"){
@@ -56,7 +65,12 @@ function playGame(button){
     const userChoice = getUserChoice(button.textContent);
     const computerChoice = getComputerChoice();
     const round = playRound(computerChoice, userChoice);
+    const historyChild = document.createElement("p");
     console.log(`Round Result: ${round}`);
+
+    historyChild.textContent = `- The Player Played ${button.textContent} and Computer played ${printChoice(computerChoice)}`;
+
+    history.appendChild(historyChild);
 
     if (round === "Computer wins") {
         computerScore++;
